@@ -44,6 +44,10 @@
 
 <template>
 
+    <h1>BREAKING BAD API</h1>
+    <AppWrapper />
+    <AppCharactersList />
+
 </template>
 
 <style lang="scss">
