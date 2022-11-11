@@ -36,6 +36,31 @@
 
             });
 
+        },
+        methods: {
+
+            searchBySeries() { 
+
+                let url = "";
+                this.cards.loading = true;
+                if(cards.series === "") {
+                    url=`https://www.breakingbadapi.com/api/characters`;
+                } else {
+
+                    url=`https://www.breakingbadapi.com/api/characters?category=${cards.series}`;
+
+                }
+
+                axios.get(url).then((resp) => {
+
+                
+                    this.cards.characters = resp.data;
+                    console.log(this.cards.characters);
+                    this.cards.loading = false;
+
+                });
+
+            }
         }
 
     }
@@ -45,7 +70,7 @@
 <template>
 
     <h1>BREAKING BAD API</h1>
-    <AppWrapper />
+    <AppWrapper @selected="searchBySeries" />
     <AppCharactersList />
 
 </template>
